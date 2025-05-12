@@ -8,16 +8,22 @@ class LocationViewModel extends ChangeNotifier {
   final LocationService _locationService = LocationService();
   LocationModel? _location;
   StreamSubscription<Position>? _positionStream;
+  bool _isLoading = true;
 
   LocationModel? get location => _location;
+  bool get isLoading => _isLoading;
 
   void startLocationUpdates() async {
+    _isLoading = true;
+    notifyListeners();
+
     final stream = await _locationService.getPositionStream();
     _positionStream = stream.listen((position) {
       _location = LocationModel(
         latitude: position.latitude,
         longitude: position.longitude,
       );
+      _isLoading = false;
       notifyListeners();
     });
   }

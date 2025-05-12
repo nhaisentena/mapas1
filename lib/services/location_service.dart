@@ -9,7 +9,7 @@ class LocationService {
     if (batteryLevel > 50) return LocationAccuracy.best;
     if (batteryLevel > 30) return LocationAccuracy.high;
     if (batteryLevel > 20) return LocationAccuracy.medium;
-    return LocationAccuracy.low;
+    return LocationAccuracy.low; 
   }
 
   Future<Stream<Position>> getPositionStream() async {
@@ -18,7 +18,7 @@ class LocationService {
     return Geolocator.getPositionStream(
       locationSettings: LocationSettings(
         accuracy: accuracy,
-        distanceFilter: 10,
+        distanceFilter: 10, 
       ),
     );
   }

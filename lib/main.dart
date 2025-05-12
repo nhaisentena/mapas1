@@ -29,7 +29,9 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: Scaffold(
-        appBar: AppBar(title: const Text('Localización en el Mapa')),
+        appBar: AppBar(
+          title: const Text('Localización en el mapa'),
+        ),
         body: const MapView(),
       ),
     );
